@@ -61,7 +61,7 @@
     - name: Set Flameshot Binding
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding'
-        value: "Print"
+        value: "'Print'"
         state: present
 
     - name: Set Flameshot Command
@@ -73,7 +73,7 @@
     - name: Set CopyQ Name
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name'
-        value: "CopyQ"
+        value: "'CopyQ'"
         state: present
 
     - name: Set CopyQ Binding
