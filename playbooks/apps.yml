@@ -79,13 +79,13 @@
     - name: Set CopyQ Binding
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding'
-        value: "<Alt>F1"
+        value: "'<Alt>F1'"
         state: present
 
     - name: Set CopyQ Command
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command'
-        value: "copyq toggle"
+        value: "'copyq toggle'"
         state: present
 
     - name: Disable CopyQ Notification
