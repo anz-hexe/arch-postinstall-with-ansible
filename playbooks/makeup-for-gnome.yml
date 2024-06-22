@@ -55,6 +55,7 @@
           - extra/dconf-editor
           - extra/webp-pixbuf-loader
           - extra/gnome-firmware
+          - extra/gnome-control-center
         state: present
       become: true
 
