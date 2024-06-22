@@ -55,7 +55,7 @@
     - name: Set Flameshot Name
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name'
-        value: "Flameshot"
+        value: "'Flameshot'"
         state: present
 
     - name: Set Flameshot Binding
