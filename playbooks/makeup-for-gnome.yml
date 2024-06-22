@@ -280,7 +280,7 @@
         value: "['size', 'none', 'none']"
         state: present
 
-    - name: Set Favorite Apps
+    - name: Nautilus Sort Directories First
       community.general.dconf:
         key: "/org/gnome/shell/favorite-apps"
         value: "['code.desktop', 'md.obsidian.Obsidian.desktop', 'org.gnome.Console.desktop', 'firefox.desktop', 'org.telegram.desktop.desktop']"
