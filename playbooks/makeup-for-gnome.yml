@@ -251,10 +251,10 @@
         value: "'24h'"
         state: present
 
-    - name: Interface GTK theme 'Adwaita-dark'
+    - name: Interface GTK theme 'adwaita'
       community.general.dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'Adwaita-dark'"
+        value: "'adwaita'"
         state: present
 
     - name: Interface icon theme 'Papirus-Dark'
