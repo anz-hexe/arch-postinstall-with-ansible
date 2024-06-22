@@ -21,7 +21,7 @@
     #############################################################
     # Enable Color
     #############################################################    
-    - name: Enable multilib in pacman.conf
+    - name: Enable color in pacman.conf
       ansible.builtin.replace:
         path: /etc/pacman.conf
         regexp: '#Color'
