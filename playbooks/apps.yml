@@ -64,10 +64,22 @@
         value: "'Print'"
         state: present
 
+    - name: Create Flameshot Workaround 
+      ansible.builtin.blockinfile:
+        path: /usr/local/bin/flameshot-gui-workaround
+        mode: '0755'
+        create: true
+        state: present
+        block: |
+          #!/bin/bash
+          # workaround thanks to https://github.com/flatpak/xdg-desktop-portal/issues/1070#issuecomment-1762884545
+          env QT_QPA_PLATFORM=wayland flameshot gui
+      become: true
+
     - name: Set Flameshot Command
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command'
-        value: "'QT_QPA_PLATFORM=wayland flameshot gui'"
+        value: "'flameshot-gui-workaround'"
         state: present
 
     - name: Set CopyQ Name
