@@ -3,9 +3,17 @@
   hosts: "*"
 
   tasks:
+    - name: Install 'bluez'
+      community.general.pacman:
+        name:
+          - extra/bluez
+          - extra/bluez-utils
+        state: present
+      become: true
+
     - name: Enable 'bluetooth' service started
       ansible.builtin.systemd:
-        name: bluetooth.service
+        name: bluetooth
         enabled: true
         state: started
         masked: false
