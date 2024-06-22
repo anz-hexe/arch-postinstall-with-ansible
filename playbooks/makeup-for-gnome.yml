@@ -156,6 +156,14 @@
         create: true
       become: true
 
+    - name: Enable HIGH DPI Scaling for Qt
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        mode: '0644'
+        line: 'QT_ENABLE_HIGHDPI_SCALING=1'
+        create: true
+      become: true
+
     - name: Set specific scaling for Qt
       ansible.builtin.lineinfile:
         path: /etc/environment
