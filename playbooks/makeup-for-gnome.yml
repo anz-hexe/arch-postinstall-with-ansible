@@ -97,6 +97,7 @@
           - gnome-themes-extra
           - papirus-icon-theme
           - qt5ct
+          - extra/breeze-gtk
           - extra/noto-fonts
           - extra/noto-fonts-cjk
           - extra/noto-fonts-emoji
@@ -132,11 +133,11 @@
         create: true
       become: true
 
-    - name: Set default theme as 'Adwaita-Dark'
+    - name: Set default theme as 'adwaita'
       ansible.builtin.lineinfile:
         path: /etc/environment
         mode: '0644'
-        line: 'QT_STYLE_OVERRIDE=Adwaita-Dark'
+        line: 'QT_STYLE_OVERRIDE=adwaita'
         create: true
       become: true
 
