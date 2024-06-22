@@ -5,7 +5,7 @@
   tasks:
     - name: Enable 'bluetooth' service started
       ansible.builtin.systemd:
-        name: bluetooth
+        name: bluetooth.service
         enabled: true
         state: started
         masked: false
