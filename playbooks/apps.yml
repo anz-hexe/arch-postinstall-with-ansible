@@ -183,6 +183,6 @@
     - name: CopyQ Autostart
       ansible.builtin.copy:
         remote_src: true
-        src: /usr/share/applications/copyq.desktop
-        dest: ~/.config/autostart/copyq.desktop
+        src: /usr/share/applications/com.github.hluk.copyq.desktop
+        dest: ~/.config/autostart/com.github.hluk.copyq.desktop
         mode: '0755'
