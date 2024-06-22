@@ -164,6 +164,7 @@
         create: true
       become: true
 
+    # Helps to fix issues with Flameshot screenshot capture
     - name: Set QPA platform for Qt
       ansible.builtin.lineinfile:
         path: /etc/environment
