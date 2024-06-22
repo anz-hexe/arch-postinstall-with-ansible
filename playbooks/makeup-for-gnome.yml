@@ -283,6 +283,12 @@
         value: "4"
         state: present
 
+    - name: Enable fractional scaling
+      community.general.dconf:
+        key: "/org/gnome/mutter/experimental-features"
+        value: "['scale-monitor-framebuffer']"
+        state: present
+
     #############################################################
     # Setting Wallpaper
     #############################################################
