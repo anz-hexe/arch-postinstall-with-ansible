@@ -32,7 +32,7 @@
         use: paru
         state: present
       become: true
-      become_user: aura
+      become_user: pkg
 
     # Required for 'python-rocker'.
     - name: Install 'extra/xorg-xauth'
@@ -55,7 +55,7 @@
         use: paru
         state: present
       become: true
-      become_user: aura
+      become_user: pkg
 
     - name: Create 'daemon.json' for docker.
       become: true

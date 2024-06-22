@@ -18,7 +18,7 @@
           - aur/tuxedo-keyboard-ite-dkms
         use: trizen
         state: present
-      become_user: aura
+      become_user: pkg
       become: true
 
     #############################################################

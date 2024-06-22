@@ -88,7 +88,7 @@
           - aur/gnome-shell-extension-tiling-assistant
           # - aur/gnome-shell-extension-space-bar-git
         state: present
-      become_user: aura
+      become_user: pkg
       become: true
 
     - name: Install Extension Manager

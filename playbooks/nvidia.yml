@@ -28,5 +28,5 @@
     #       - aur/gnome-shell-extension-gpu-profile-selector-git
     #     use: paru
     #     state: present
-    #   become_user: aura
+    #   become_user: pkg
     #   become: true

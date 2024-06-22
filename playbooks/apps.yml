@@ -49,7 +49,7 @@
           - aur/visual-studio-code-bin
           - aur/kirc
         state: present
-      become_user: aura
+      become_user: pkg
       become: true
 
     - name: Create hook for VSCode
