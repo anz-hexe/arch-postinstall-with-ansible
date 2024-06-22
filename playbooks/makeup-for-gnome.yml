@@ -168,7 +168,7 @@
       ansible.builtin.lineinfile:
         path: /etc/environment
         mode: '0644'
-        line: 'QT_SCALE_FACTOR=1.25'
+        line: 'QT_SCREEN_SCALE_FACTORS=1.25'
         create: true
       become: true
 
