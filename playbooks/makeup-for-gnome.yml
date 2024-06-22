@@ -283,7 +283,7 @@
     - name: Set Favorite Apps
       community.general.dconf:
         key: "/org/gnome/shell/favorite-apps"
-        value: "['code.desktop', 'org.mozilla.firefox.desktop', 'md.obsidian.Obsidian.desktop']"
+        value: "['code.desktop', 'md.obsidian.Obsidian.desktop', 'org.gnome.Console.desktop', 'firefox.desktop', 'org.telegram.desktop.desktop']"
         state: present
 
     - name: Remove system sounds
