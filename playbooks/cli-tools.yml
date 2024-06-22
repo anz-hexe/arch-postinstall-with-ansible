@@ -8,106 +8,44 @@
     community.general.pacman:
       update_cache: true
 
-  - name: Remove 'nano'
+  - name: Remove cli tools
     community.general.pacman:
-      name: nano
-      state: absent
-
-  - name: Remove 'vim'
-    community.general.pacman:
-      name:
+      name: 
+        - nano
         - vim
         - vim-runtime
       state: absent
 
-  - name: Install 'midnight Commander'
+  - name: Add favorite cli tools
     community.general.pacman:
-      name: mc
-      state: present
-
-  - name: Install 'less'
-    community.general.pacman:
-      name: core/less
-      state: present
-
-  - name: Install 'man'
-    community.general.pacman:
-      name: core/man-db
-      state: present
-
-  - name: Install 'tldr'
-    community.general.pacman:
-      name: extra/tldr
-      state: present
-
-  - name: Install 'jq'
-    community.general.pacman:
-      name: extra/jq
-      state: present
-
-  - name: Install 'ncdu'
-    community.general.pacman:
-      name: extra/ncdu
-      state: present
-
-  - name: Install 'dust'
-    community.general.pacman:
-      name: extra/dust
-      state: present
-
-  - name: Install 'duf'
-    community.general.pacman:
-      name: extra/duf
-      state: present
-
-  - name: Install 'dog'
-    community.general.pacman:
-      name: extra/dog
-      state: present
-
-  - name: Install 'fd'
-    community.general.pacman:
-      name: extra/fd
-      state: present
-
-  - name: Install 'tmux'
-    community.general.pacman:
-      name: tmux
-      state: present
-
-  - name: Install 'curl'
-    community.general.pacman:
-      name: curl
-      state: present
-
-  - name: Install 'wget'
-    community.general.pacman:
-      name: wget
-      state: present
-
-  - name: Install 'htop'
-    community.general.pacman:
-      name: htop
-      state: present
-
-  - name: Install 'bmon'
-    community.general.pacman:
-      name: bmon
-      state: present
-
-  - name: Install 'git'
-    community.general.pacman:
-      name: git
-      state: present
-
-  - name: Install 'zsh'
-    community.general.pacman:
-      name: zsh
-      state: present
-
-  - name: Install 'neovim'
-    community.general.pacman:
-      name: neovim
+      name: 
+        - mc
+        - less
+        - man-db
+        - tldr
+        - jq
+        - fd
+        - ncdu
+        - dust
+        - curl
+        - tmux
+        - wget
+        - htop
+        - git
+        - zsh
+        - neovim
+        - bmon
+        - eza
+        - zoxide
+        - bat
+        - neofetch
+        - pkgfile
+        - mlocate
+        - ripgrep-all
+        - flatpak
+        - wireguard-tools
+        - rsync
+        - pwgen
       state: present
 
   - name: Set 'neovim' as default editor
@@ -117,75 +55,3 @@
       line: 'EDITOR=nvim'
       create: true
     become: true
-
-  - name: Install 'eza' replacement for 'ls'
-    community.general.pacman:
-      name: eza
-      state: present
-
-  - name: Install 'lsd' replacement for 'ls'
-    community.general.pacman:
-      name: extra/lsd
-      state: present
-
-  - name: Install 'broot'
-    community.general.pacman:
-      name: extra/broot
-      state: present
-
-  - name: Install 'zoxide'
-    community.general.pacman:
-      name: extra/zoxide
-      state: present
-
-  - name: Install 'bat' replacement for 'cat'
-    community.general.pacman:
-      name: bat
-      state: present
-
-  - name: Install 'neofetch' because I'm using Arch
-    community.general.pacman:
-      name: neofetch
-      state: present
-
-  - name: Install 'pkgfile'
-    community.general.pacman:
-      name: pkgfile
-      state: present
-
-  - name: Install 'mlocate'
-    community.general.pacman:
-      name: mlocate
-      state: present
-
-  - name: Install 'ripgrep'
-    community.general.pacman:
-      name:
-        - ripgrep
-        - ripgrep-all
-      state: present
-
-  - name: Install 'flatpak'
-    community.general.pacman:
-      name: flatpak
-      state: present
-
-  - name: Install 'wireguard-tools'
-    community.general.pacman:
-      name: extra/wireguard-tools
-      state: present
-
-  - name: Install 'rsync'
-    community.general.pacman:
-      name: extra/rsync
-      state: present
-
-  - name: Install 'nmap'
-    community.general.pacman:
-      name: extra/nmap
-      state: present
-
-  - name: Install 'pwgen'
-    community.general.pacman:
-      name: extra/pwgen
-      state: present
