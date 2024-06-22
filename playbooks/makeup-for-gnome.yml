@@ -109,6 +109,18 @@
         state: present
       become: true
 
+    - name: Install additional themes
+      kewlfft.aur.aur:
+        use: paru
+        name:
+          - aur/adwaita-qt5-git
+          - aur/adwaita-qt6-git
+          - aur/gnome-shell-extension-blur-my-shell
+          - aur/gnome-shell-extension-tiling-assistant
+        state: present
+      become_user: pkg
+      become: true
+
     #############################################################
     # Configure look of KDE apps
     #############################################################
