@@ -4,26 +4,12 @@
 
   tasks:
     #############################################################
-    # Enable flathub
-    #############################################################
-    - name: Add the flathub flatpak repository remote to the user installation
-      community.general.flatpak_remote:
-        name: flathub
-        state: present
-        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-        method: system
-      become: true
-    #############################################################
     # Install apps from Arch Repos
     #############################################################
     - name: Install additional apps
       community.general.pacman:
         name:
           - extra/syncthing
-          - extra/gparted
-          - extra/edk2-ovmf
-          - extra/qemu-desktop
-          - extra/weechat
           - extra/earlyoom
         state: present
       become: true
@@ -74,251 +60,35 @@
           Exec=/bin/sh -c 'sed -i "s/\(inode\/directory=\|text\/plain=\)code.desktop;\(.*\)/\1\2/g" /usr/share/applications/mimeinfo.cache; sed -i "s/text\/plain;inode\/directory;//g" /usr/share/applications/code.desktop'
 
     #############################################################
+    # Enable flathub
+    #############################################################
+    - name: Add the flathub flatpak repository remote to the user installation
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        method: system
+      become: true
+    #############################################################
     # Install flatpak apps
     #############################################################
-    - name: Install Komikku (flatpak)
+    - name: Install Flatpak apps
       community.general.flatpak:
-        name: info.febvre.Komikku
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Halloy (flatpak)
-      community.general.flatpak:
-        name: org.squidowl.halloy
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Seahorse (flatpak)
-      community.general.flatpak:
-        name: org.gnome.seahorse.Application
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Flameshot (flatpak)
-      community.general.flatpak:
-        name: org.flameshot.Flameshot
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Podcasts (flatpak)
-      community.general.flatpak:
-        name: org.gnome.Podcasts
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Helvum (flatpak)
-      community.general.flatpak:
-        name: org.pipewire.Helvum
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install CopyQ (flatpak)
-      community.general.flatpak:
-        name: com.github.hluk.copyq
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install KeePassXC (flatpak)
-      community.general.flatpak:
-        name: org.keepassxc.KeePassXC
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install MPV (flatpak)
-      community.general.flatpak:
-        name: io.mpv.Mpv
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Flatseal (flatpak)
-      community.general.flatpak:
-        name: com.github.tchx84.Flatseal
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Firefox (flatpak)
-      community.general.flatpak:
-        name: org.mozilla.firefox
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Chromium (flatpak)
-      community.general.flatpak:
-        name: org.chromium.Chromium
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Telegram Desktop (flatpak)
-      community.general.flatpak:
-        name: org.telegram.desktop
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Slack Desktop (flatpak)
-      community.general.flatpak:
-        name: com.slack.Slack
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Signal Desktop (flatpak)
-      community.general.flatpak:
-        name: org.signal.Signal
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Discord (flatpak)
-      community.general.flatpak:
-        name: com.discordapp.Discord
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Steam (flatpak)
-      community.general.flatpak:
-        name: com.valvesoftware.Steam
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Gradience (flatpak)
-      community.general.flatpak:
-        name: com.github.GradienceTeam.Gradience
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Obsidian (flatpak)
-      community.general.flatpak:
-        name: md.obsidian.Obsidian
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Kdenlive (flatpak)
-      community.general.flatpak:
-        name: org.kde.kdenlive
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Onlyoffice (flatpak)
-      community.general.flatpak:
-        name: org.onlyoffice.desktopeditors
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install OBS Studio (flatpak)
-      community.general.flatpak:
-        name: com.obsproject.Studio
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Arduino IDE (flatpak)
-      community.general.flatpak:
-        name: cc.arduino.IDE2
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Identity (flatpak)
-      community.general.flatpak:
-        name: org.gnome.gitlab.YaLTeR.Identity
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Dialect (flatpak)
-      community.general.flatpak:
-        name: app.drey.Dialect
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Metadata Cleaner (flatpak)
-      community.general.flatpak:
-        name: fr.romainvigier.MetadataCleaner
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Pomodoro (flatpak)
-      community.general.flatpak:
-        name: io.gitlab.idevecore.Pomodoro
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Krita (flatpak)
-      community.general.flatpak:
-        name: org.kde.krita
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install qFlipper (flatpak)
-      community.general.flatpak:
-        name: one.flipperzero.qFlipper
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install ImHex (flatpak)
-      community.general.flatpak:
-        name: net.werwolv.ImHex
-        method: system
-        remote: flathub
-        state: present
-      become: true
-
-    - name: Install Mission Center (flatpak)
-      community.general.flatpak:
-        name: io.missioncenter.MissionCenter
+        name: 
+          - org.gnome.Podcasts
+          - org.keepassxc.KeePassXC
+          - io.mpv.Mpv
+          - org.telegram.desktop
+          - com.valvesoftware.Steam
+          - md.obsidian.Obsidian
+          - org.kde.kdenlive
+          - org.onlyoffice.desktopeditors
+          - com.obsproject.Studio
+          - org.gnome.gitlab.YaLTeR.Identity
+          - fr.romainvigier.MetadataCleaner
+          - io.gitlab.idevecore.Pomodoro
+          - org.kde.krita
+          - io.missioncenter.MissionCenter
         method: system
         remote: flathub
         state: present
@@ -331,26 +101,6 @@
       ansible.builtin.file:
         path: ~/.config/autostart/
         state: directory
-        mode: '0755'
-
-    - name: CopyQ
-      ansible.builtin.copy:
-        remote_src: true
-        src: /var/lib/flatpak/exports/share/applications/com.github.hluk.copyq.desktop
-        dest: ~/.config/autostart/com.github.hluk.copyq.desktop
-        mode: '0755'
-
-    - name: Run CopyQ in tray mode
-      ansible.builtin.lineinfile:
-        path: ~/.config/autostart/com.github.hluk.copyq.desktop
-        regexp: '^Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server show'
-        line: Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server
-
-    - name: Flameshot
-      ansible.builtin.copy:
-        remote_src: true
-        src: /var/lib/flatpak/exports/share/applications/org.flameshot.Flameshot.desktop
-        dest: ~/.config/autostart/org.flameshot.Flameshot.desktop
         mode: '0755'
 
     - name: Syncthing GTK
