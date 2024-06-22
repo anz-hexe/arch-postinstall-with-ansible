@@ -148,6 +148,22 @@
         create: true
       become: true
 
+    - name: Disable Qt Auto Scaling
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        mode: '0644'
+        line: 'QT_AUTO_SCREEN_SCALE_FACTOR=0'
+        create: true
+      become: true
+
+    - name: Set specific scaling for Qt
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        mode: '0644'
+        line: 'QT_SCALE_FACTOR=1.25'
+        create: true
+      become: true
+
     #############################################################
     # Configure Gnome
     #############################################################
