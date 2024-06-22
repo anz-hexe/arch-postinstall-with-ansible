@@ -164,6 +164,14 @@
         create: true
       become: true
 
+    - name: Set QPA platform for Qt
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        mode: '0644'
+        line: 'QT_QPA_PLATFORM=wayland'
+        create: true
+      become: true
+
     #############################################################
     # Configure Gnome
     #############################################################
