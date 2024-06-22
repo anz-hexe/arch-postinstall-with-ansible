@@ -67,7 +67,7 @@
     - name: Set Flameshot Command
       community.general.dconf:
         key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command'
-        value: "flameshot gui"
+        value: "'flameshot gui'"
         state: present
 
     - name: Set CopyQ Name
