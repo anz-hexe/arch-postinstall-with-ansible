@@ -30,10 +30,8 @@
         use: paru
         name:
           - aur/syncthing-gtk
-          - aur/foxglove-studio-bin
           - aur/steam-devices-git # Required by Flatpak Steam
           - aur/visual-studio-code-bin
-          - aur/kirc
         state: present
       become_user: pkg
       become: true
