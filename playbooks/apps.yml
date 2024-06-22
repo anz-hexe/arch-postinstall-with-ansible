@@ -9,8 +9,10 @@
     - name: Install additional apps
       community.general.pacman:
         name:
+          - extra/flameshot
           - extra/syncthing
           - extra/earlyoom
+          - extra/copyq
         state: present
       become: true
 
@@ -21,6 +23,76 @@
         state: started
         masked: false
       become: true
+
+    - name: Create CopyQ config directory
+      ansible.builtin.file:
+        path: ~/.config/copyq/
+        state: directory
+        mode: '0755'
+
+    - name: Create CopyQ Config
+      ansible.builtin.blockinfile:
+        path: ~/.config/copyq/copyq.conf
+        mode: '0644'
+        create: true
+        state: present
+        block: |
+          [Options]
+          maxitems=2000
+          tabs=&clipboard
+          always_on_top=true
+          confirm_exit=false
+          close_on_unfocus=true
+          activate_pastes=false
+          disable_tray=false
+
+    - name: Set Customm Keybindings
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings'
+        value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+        state: present
+
+    - name: Set Flameshot Name
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name'
+        value: "Flameshot"
+        state: present
+
+    - name: Set Flameshot Binding
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding'
+        value: "Print"
+        state: present
+
+    - name: Set Flameshot Command
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command'
+        value: "flameshot gui"
+        state: present
+
+    - name: Set CopyQ Name
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name'
+        value: "CopyQ"
+        state: present
+
+    - name: Set CopyQ Binding
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding'
+        value: "<Alt>F1"
+        state: present
+
+    - name: Set CopyQ Command
+      community.general.dconf:
+        key: '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command'
+        value: "copyq toggle"
+        state: present
+
+    - name: Disable CopyQ Notification
+      community.general.dconf:
+        key: '/org/gnome/desktop/notifications/application/com-github-hluk-copyq/enable'
+        value: "false"
+        state: present
 
     #############################################################
     # Install apps from Arch Users repos
@@ -106,4 +178,11 @@
         remote_src: true
         src: /usr/share/applications/syncthing-gtk.desktop
         dest: ~/.config/autostart/syncthing-gtk.desktop
+        mode: '0755'
+
+    - name: CopyQ Autostart
+      ansible.builtin.copy:
+        remote_src: true
+        src: /usr/share/applications/copyq.desktop
+        dest: ~/.config/autostart/copyq.desktop
         mode: '0755'
