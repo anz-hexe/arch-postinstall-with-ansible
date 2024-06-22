@@ -19,17 +19,6 @@
       become: true
 
     #############################################################
-    # Enable flathub
-    #############################################################
-    - name: Add the flathub flatpak repository remote to the user installation
-      community.general.flatpak_remote:
-        name: flathub
-        state: present
-        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-        method: system
-      become: true
-
-    #############################################################
     # Clean gnome unused gnome packages after install
     #############################################################
     - name: Remove unused apps
@@ -86,7 +75,6 @@
         name:
           - aur/gnome-shell-extension-blur-my-shell
           - aur/gnome-shell-extension-tiling-assistant
-          # - aur/gnome-shell-extension-space-bar-git
         state: present
       become_user: pkg
       become: true
@@ -105,8 +93,6 @@
     - name: Install themes, icons & fonts
       community.general.pacman:
         name:
-          # - adwaita-qt5
-          # - adwaita-qt6
           - gnome-themes-extra
           - papirus-icon-theme
           - qt5ct
@@ -186,12 +172,6 @@
       community.general.dconf:
         key: "/org/gnome/desktop/input-sources/sources"
         value: "[('xkb', 'us')]"
-        state: present
-
-    - name: Switch input sources 'CapsLock'
-      community.general.dconf:
-        key: "/org/gnome/desktop/input-sources/xkb-options"
-        value: "['grp:caps_toggle']"
         state: present
 
     - name: Set language per-window
@@ -312,15 +292,6 @@
         mode: '0755'
       become: true
 
-    - name: 'Download wallpaper #1'
-      ansible.builtin.get_url:
-        url: https://w.wallhaven.cc/full/kw/wallhaven-kwwgx7.jpg
-        dest: /usr/share/backgrounds/custom/wallhaven-kwwgx7.jpg
-        checksum: sha1:de704a1acd0af436f31c8b1efd36846f38fd2b43
-        force: true
-        mode: '0644'
-      become: true
-
     - name: 'Download wallpaper #2'
       ansible.builtin.get_url:
         url: https://w.wallhaven.cc/full/lm/wallhaven-lmmo8r.jpg
@@ -330,40 +301,22 @@
         mode: '0644'
       become: true
 
-    - name: 'Download wallpaper #3'
-      ansible.builtin.get_url:
-        url: https://w.wallhaven.cc/full/83/wallhaven-833w52.jpg
-        dest: /usr/share/backgrounds/custom/wallhaven-833w52.jpg
-        checksum: sha1:ebf01334d96dbb45be7269e9459698440a1965d3
-        force: true
-        mode: '0644'
-      become: true
-
-    - name: 'Download wallpaper #4'
-      ansible.builtin.get_url:
-        url: https://w.wallhaven.cc/full/9m/wallhaven-9mel2k.png
-        dest: /usr/share/backgrounds/custom/wallhaven-9mel2k.jpg
-        checksum: sha1:574dbf55af3e304e33527a6b3a5a899b68197864
-        force: true
-        mode: '0644'
-      become: true
-
     - name: Set background picture
       community.general.dconf:
         key: '/org/gnome/desktop/background/picture-uri'
-        value: "'file:///usr/share/backgrounds/custom/wallhaven-9mel2k.jpg'"
+        value: "'file:///usr/share/backgrounds/custom/wallhaven-lmmo8r.jpg'"
         state: present
 
     - name: Set background picture (dark mode)
       community.general.dconf:
         key: '/org/gnome/desktop/background/picture-uri-dark'
-        value: "'file:///usr/share/backgrounds/custom/wallhaven-9mel2k.jpg'"
+        value: "'file:///usr/share/backgrounds/custom/wallhaven-lmmo8r.jpg'"
         state: present
 
     - name: Set screensaver picture
       community.general.dconf:
         key: '/org/gnome/desktop/background/picture-uri-dark'
-        value: "'file:///usr/share/backgrounds/custom/wallhaven-9mel2k.jpg'"
+        value: "'file:///usr/share/backgrounds/custom/wallhaven-lmmo8r.jpg'"
         state: present
 
     - name: Set background primary color
