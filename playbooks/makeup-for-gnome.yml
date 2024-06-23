@@ -133,11 +133,11 @@
         create: true
       become: true
 
-    - name: Set default theme as 'adwaita'
+    - name: Set default theme as 'Adwaita-dark'
       ansible.builtin.lineinfile:
         path: /etc/environment
         mode: '0644'
-        line: 'QT_STYLE_OVERRIDE=adwaita'
+        line: 'QT_STYLE_OVERRIDE=Adwaita-dark'
         create: true
       become: true
 
@@ -251,10 +251,10 @@
         value: "'24h'"
         state: present
 
-    - name: Interface GTK theme 'adwaita'
+    - name: Interface GTK theme 'Adwaita-dark'
       community.general.dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'adwaita'"
+        value: "'Adwaita-dark'"
         state: present
 
     - name: Interface icon theme 'Papirus-Dark'
