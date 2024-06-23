@@ -117,6 +117,7 @@
           - aur/syncthing-gtk
           - aur/steam-devices-git # Required by Flatpak Steam
           - aur/visual-studio-code-bin
+          - aur/rpi-imager-bin
         state: present
       become_user: pkg
       become: true
