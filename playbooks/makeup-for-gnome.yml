@@ -293,6 +293,12 @@
         value: "false"
         state: present
 
+    - name: Turn off screen after 15 min
+      community.general.dconf:
+        key: "/org/gnome/desktop/session/idle-delay"
+        value: "900"
+        state: present
+
     - name: Disable Hot Corner
       community.general.dconf:
         key: "/org/gnome/desktop/interface/enable-hot-corners"
